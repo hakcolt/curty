@@ -2,9 +2,6 @@ import Background from "./Background"
 import SearchBar from "./SearchBar"
 
 export default function Hero() {
-
-  // TODO: Modularize it
-
   return (
     <div className="isolate bg-white">
       <Background></Background>

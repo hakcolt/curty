@@ -1,6 +1,5 @@
 import "tailwindcss/tailwind.css"
-
-import { AuthProvider } from '../src/contexts/AuthContext'
+import { AuthProvider } from "../src/providers/auth"
 
 function MyApp({ Component, pageProps }) {
   return (

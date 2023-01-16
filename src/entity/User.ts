@@ -1,8 +1,10 @@
-export class User {
-  uid: string
-  imageUrl: string | null
-  firstName: string
-  lastName: string
-  email: string
-  gender: string
+export type User = {
+  id: string,
+  refreshToken: string,
+  firstName: string,
+  lastName: string,
+  email: string,
+  imageUrl: string,
+  gender: string,
+  createdAt: string
 }

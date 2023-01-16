@@ -1,12 +1,21 @@
 import { Menu, Transition } from "@headlessui/react"
 import { Fragment, useContext } from "react"
-import { AuthContext } from "../../src/contexts/AuthContext"
 
 import { UserCircleIcon } from "@heroicons/react/24/outline"
+import UserContext from "../../src/providers/user/UserContext"
+import { useAuth } from "../../src/providers/auth"
+import Router from "next/router"
 
 export default function ProfileOptions({ profileNavigation }) {
-  const { user } = useContext(AuthContext)
+  const { logOut } = useAuth()
+  const user = useContext(UserContext)
   const image = user?.imageUrl
+
+  const onLogOutListener = () => {
+    logOut()
+    Router.push("/login")
+  }
+
   return (
     <Menu as="div" className="relative ml-3">
       <div>
@@ -33,13 +42,17 @@ export default function ProfileOptions({ profileNavigation }) {
               { ({ active }) => (
                 <a
                   href={ href }
-                  className={ (active ? 'bg-gray-100' : '') + ' block px-4 py-2 text-sm text-gray-700' }
+                  className={ (active ? "bg-gray-100" : '') + " block px-4 py-2 text-sm text-gray-700" }
                 >
                   { name }
                 </a>
               ) }
             </Menu.Item>
           )) }
+          <button
+            className={ "w-full text-left block px-4 hover:bg-gray-100 py-2 text-sm text-gray-700" }
+            onClick={ onLogOutListener }
+          >Log out</button>
         </Menu.Items>
       </Transition>
     </Menu>

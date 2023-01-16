@@ -1,4 +1,5 @@
-export class Session {
-  token: string
+export type AccessToken = {
+  token: string,
+  createdAt: string,
   expiresAt: string
 }

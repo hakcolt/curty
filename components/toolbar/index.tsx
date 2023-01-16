@@ -10,8 +10,7 @@ const navigation = [
 ]
 const profileNavigation = [
   { name: 'Your Profile', href: '#' },
-  { name: 'Settings', href: '#' },
-  { name: 'Sign out', href: '#' },
+  { name: 'Settings', href: '#' }
 ]
 
 export default function Toolbar() {
