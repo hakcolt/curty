@@ -1,4 +1,4 @@
-import { AccessToken } from "../../entity/Session"
+import { AccessToken } from "../../entity/AccessToken"
 import { User } from "../../entity/User"
 
 type LoginApiResponse = {
@@ -10,8 +10,7 @@ type LoginApiResponse = {
   data: {
     accessToken: AccessToken
     user: User
-  } 
-
+  }
 }
 
 export type { LoginApiResponse }
