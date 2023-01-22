@@ -1,5 +1,5 @@
-export type AccessToken = {
-  token: string,
-  createdAt: string,
+export class AccessToken {
+  token: string
+  createdAt: string
   expiresAt: string
 }

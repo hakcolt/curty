@@ -3,13 +3,13 @@ import { BellIcon } from "@heroicons/react/24/outline"
 import { useContext } from "react"
 
 import { UserCircleIcon } from "@heroicons/react/24/outline"
-import UserContext from "../../../src/providers/user/UserContext"
+import { HomeContext } from "../../../src/providers/home/HomeProvider"
 import { useAuth } from "../../../src/providers/auth"
 import Router from "next/router"
 
 export default function ToolbarMobile({ navigation, profileNavigation }) {
   const { logOut } = useAuth()
-  const user = useContext(UserContext)
+  const { user } = useContext(HomeContext)
 
   const profileImage = user?.imageUrl
 
@@ -41,7 +41,7 @@ export default function ToolbarMobile({ navigation, profileNavigation }) {
           <div className="flex-shrink-0">
             {
               profileImage ? <img className="h-10 w-10 rounded-full" src={ profileImage } alt="" /> :
-                <UserCircleIcon className="h-10 w-10 rounded-full"></UserCircleIcon>
+                <UserCircleIcon className="h-10 w-10 rounded-full text-gray-200"></UserCircleIcon>
             }
           </div>
           <div className="ml-3">

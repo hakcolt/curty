@@ -1,16 +1,18 @@
-import { AccessToken } from "../../entity/AccessToken"
-import { User } from "../../entity/User"
-
-type LoginApiResponse = {
+interface ResultData<T> {
   message: string | undefined
   error: string | undefined
-  statusCode: number,
-  _isSuccess: boolean,
+  statusCode: number
+  _isSuccess: boolean
   next: string | undefined
-  data: {
-    accessToken: AccessToken
-    user: User
-  }
+  data: T
 }
 
-export type { LoginApiResponse }
+interface Result {
+  message: string | undefined
+  error: string | undefined
+  statusCode: number
+  _isSuccess: boolean
+  next: string | undefined
+}
+
+export type { Result, ResultData }

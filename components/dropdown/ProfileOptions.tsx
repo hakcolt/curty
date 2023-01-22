@@ -2,13 +2,13 @@ import { Menu, Transition } from "@headlessui/react"
 import { Fragment, useContext } from "react"
 
 import { UserCircleIcon } from "@heroicons/react/24/outline"
-import UserContext from "../../src/providers/user/UserContext"
+import { HomeContext } from "../../src/providers/home/HomeProvider"
 import { useAuth } from "../../src/providers/auth"
 import Router from "next/router"
 
 export default function ProfileOptions({ profileNavigation }) {
   const { logOut } = useAuth()
-  const user = useContext(UserContext)
+  const { user } = useContext(HomeContext)
   const image = user?.imageUrl
 
   const onLogOutListener = () => {
@@ -36,13 +36,13 @@ export default function ProfileOptions({ profileNavigation }) {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-gray-700 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           { profileNavigation.map(({ name, href }) => (
             <Menu.Item key={ name }>
               { ({ active }) => (
                 <a
                   href={ href }
-                  className={ (active ? "bg-gray-100" : '') + " block px-4 py-2 text-sm text-gray-700" }
+                  className={ (active ? "bg-gray-600" : '') + " block px-4 py-2 text-sm text-gray-200" }
                 >
                   { name }
                 </a>
@@ -50,7 +50,7 @@ export default function ProfileOptions({ profileNavigation }) {
             </Menu.Item>
           )) }
           <button
-            className={ "w-full text-left block px-4 hover:bg-gray-100 py-2 text-sm text-gray-700" }
+            className={ "w-full text-left block px-4 hover:bg-gray-600 py-2 text-sm text-gray-200" }
             onClick={ onLogOutListener }
           >Log out</button>
         </Menu.Items>

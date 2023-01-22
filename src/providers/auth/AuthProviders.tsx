@@ -1,11 +1,6 @@
 import { destroyCookie, parseCookies, setCookie } from "nookies"
 import { createContext, useContext, useEffect, useState } from "react"
-import { signInRequest, refreshTokenRequest as accessTokenRequest } from "../../lib/auth"
-
-export interface LoginInput {
-  email: string,
-  password: string
-}
+import { LoginInput, signInRequest } from "../../lib/auth"
 
 interface AuthContextData {
   accessToken: string | null
@@ -25,12 +20,13 @@ export function AuthProvider({ children }) {
   const [accessToken, setAccessToken] = useState<string | null>(null)
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false)
 
-  // Watch access token
   useEffect(() => {
-    if (!accessToken) {
-      const { CURLY_ACCESS_TOKEN } = parseCookies()
-      if (CURLY_ACCESS_TOKEN) setAccessToken(CURLY_ACCESS_TOKEN)
-    }
+    if (accessToken) return
+      const { "curty.accessToken": cookieAccessToken } = parseCookies()
+      if (cookieAccessToken) {
+        setAccessToken(cookieAccessToken)
+        setIsAuthenticated(true)
+      }
   }, [accessToken])
 
   const logIn = async ({ email, password }: LoginInput) => {

@@ -1,8 +1,19 @@
 import { NextPageContext } from "next"
-import { LoginInput } from "../providers/auth"
-import { LoginApiResponse } from "./types"
+import { AccessToken } from "../entity/AccessToken"
+import { User } from "../entity/User"
+import { ResultData } from "./types"
 
 const delay = (amount = 750) => new Promise(resolve => setTimeout(resolve, amount))
+
+export interface LoginInput {
+  email: string,
+  password: string
+}
+
+export type LoginApiResponse = ResultData<{
+  accessToken: AccessToken
+  user: User
+}>
 
 export async function signInRequest(credentials: LoginInput): Promise<LoginApiResponse> {
   const requestHeaders = {

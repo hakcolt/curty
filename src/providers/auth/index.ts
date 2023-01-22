@@ -1,4 +1,3 @@
-import { AuthProvider, LoginInput, useAuth } from "./AuthProviders"
+import { AuthProvider, useAuth } from "./AuthProviders"
 
-export type { LoginInput }
 export { AuthProvider, useAuth }
