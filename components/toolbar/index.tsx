@@ -15,7 +15,7 @@ const profileNavigation = [
 
 export default function Toolbar() {
   return (
-    <Disclosure as="nav" className="bg-gray-800">
+    <Disclosure as="nav" className="bg-neutral-800">
       { ({ open }) => (<>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">

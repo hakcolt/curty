@@ -13,8 +13,8 @@ export default function ToolbarStart({ navigation }) {
               key={ name }
               href={ href }
               className={
-                (current ? 'bg-gray-900 text-white' :
-                  'text-gray-300 hover:bg-gray-700 hover:text-white') +
+                (current ? 'bg-neutral-900 text-white' :
+                  'text-neutral-300 hover:bg-neutral-700 hover:text-white') +
                   ' px-3 py-2 rounded-md text-sm font-medium'
               }
               aria-current={ current ? 'page' : undefined }

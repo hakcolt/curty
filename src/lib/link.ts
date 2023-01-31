@@ -1,5 +1,6 @@
 import { Link } from "../entity/Link"
-import { Result, ResultData } from "./types"
+import { ResultData } from "./types"
+import constants from "./types/Contraints"
 
 export type PushRequestInput = {
   name: string
@@ -8,51 +9,52 @@ export type PushRequestInput = {
 }
 
 export async function getURLsRequest(accessToken: string): Promise<ResultData<Link[]>> {
-  return {
-    "message": "All right",
-    "statusCode": 200,
-    "_isSuccess": true,
-    "data": [
-      {
-        "id": "haha",
-        "name": "Test",
-        "path": "/test",
-        "url": "https://test.com"
-      },
-      {
-        "id": "haha3",
-        "name": "Link to Test2",
-        "path": "/test2",
-        "url": "https://hakcolt.com"
-      }
-    ]
-  } as ResultData<Link[]>
+  const options: any = {
+    mode: "cors",
+    credentials: "include"
+  }
+
+  options.headers = { "Authorization": `Bearer ${accessToken}` }
+
+  const res = await fetch(`${constants.API_URL}/v1/links`, options)
+
+  const json = await res.json()
+  return json
 }
 
 export async function pushLinkRequest(accessToken: string, input: PushRequestInput): Promise<ResultData<Link[]>> {
-  return {
-    "message": "All right",
-    "statusCode": 200,
-    "_isSuccess": true,
-    "data": [
-      {
-        "id": "haha",
-        "name": "Test",
-        "path": "/test",
-        "url": "https://test.com"
-      },
-      {
-        "id": "haha3",
-        "name": "Link to Test2",
-        "path": "/test2",
-        "url": "https://hakcolt.com"
-      },
-      {
-        "id": "random",
-        "name": input.name,
-        "path": input.path,
-        "url": input.url
-      }
-    ]
-  } as ResultData<Link[]>
+  const requestHeaders = {
+    "Content-Type": "application/json",
+    "Authorization": `Bearer ${accessToken}`
+  }
+
+  const res = await fetch(`${constants.API_URL}/v1/links`, {
+    method: "POST",
+    mode: "cors",
+    headers: requestHeaders,
+    body: JSON.stringify(input),
+    credentials: "include"
+  })
+
+  const json = res.json()
+
+  return json
+}
+
+export async function deleteLinkRequest(accessToken: string, id: string): Promise<ResultData<Link[]>> {
+  const requestHeaders = {
+    "Content-Type": "application/json",
+    "Authorization": `Bearer ${accessToken}`
+  }
+
+  const res = await fetch(`${constants.API_URL}/v1/links/${id}`, {
+    method: "DELETE",
+    mode: "cors",
+    headers: requestHeaders,
+    credentials: "include"
+  })
+
+  const json = res.json()
+
+  return json
 }

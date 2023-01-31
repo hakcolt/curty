@@ -27,7 +27,7 @@ export default function ToolbarMobile({ navigation, profileNavigation }) {
             as="a"
             href={ item.href }
             className={ (item.current ?
-              'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white') +
+              'bg-neutral-900 text-white' : 'text-neutral-300 hover:bg-neutral-700 hover:text-white') +
               ' block px-3 py-2 rounded-md text-base font-medium'
             }
             aria-current={ item.current ? 'page' : undefined }
@@ -36,21 +36,21 @@ export default function ToolbarMobile({ navigation, profileNavigation }) {
           </Disclosure.Button>
         )) }
       </div>
-      <div className="border-t border-gray-700 pt-4 pb-3">
+      <div className="border-t border-neutral-700 pt-4 pb-3">
         <div className="flex items-center px-5">
           <div className="flex-shrink-0">
             {
               profileImage ? <img className="h-10 w-10 rounded-full" src={ profileImage } alt="" /> :
-                <UserCircleIcon className="h-10 w-10 rounded-full text-gray-200"></UserCircleIcon>
+                <UserCircleIcon className="h-10 w-10 rounded-full text-neutral-200"></UserCircleIcon>
             }
           </div>
           <div className="ml-3">
             <div className="text-base font-medium leading-none text-white">{ `${user?.firstName} ${user?.lastName}` }</div>
-            <div className="text-sm mt-1 font-medium leading-none text-gray-400">{ user?.email }</div>
+            <div className="text-sm mt-1 font-medium leading-none text-neutral-400">{ user?.email }</div>
           </div>
           <button
             type="button"
-            className="ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+            className="ml-auto flex-shrink-0 rounded-full bg-neutral-800 p-1 text-neutral-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-neutral-800"
           >
             <span className="sr-only">View notifications</span>
             <BellIcon className="h-6 w-6" aria-hidden="true" />
@@ -62,7 +62,7 @@ export default function ToolbarMobile({ navigation, profileNavigation }) {
               key={ item.name }
               as="a"
               href={ item.href }
-              className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+              className="block rounded-md px-3 py-2 text-base font-medium text-neutral-400 hover:bg-neutral-700 hover:text-white"
             >
               { item.name }
             </Disclosure.Button>
@@ -72,7 +72,7 @@ export default function ToolbarMobile({ navigation, profileNavigation }) {
             key="Log Out"
             as="button"
             onClick={ onLogOutListener }
-            className="block text-left w-full rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+            className="block text-left w-full rounded-md px-3 py-2 text-base font-medium text-neutral-400 hover:bg-neutral-700 hover:text-white"
           >Log Out</Disclosure.Button>
 
         </div>

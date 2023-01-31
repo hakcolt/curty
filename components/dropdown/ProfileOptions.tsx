@@ -19,11 +19,11 @@ export default function ProfileOptions({ profileNavigation }) {
   return (
     <Menu as="div" className="relative ml-3">
       <div>
-        <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+        <Menu.Button className="flex max-w-xs items-center rounded-full bg-neutral-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-neutral-800">
           <span className="sr-only">Open user menu</span>
           { image ?
             (<img className="h-8 w-8 rounded-full" src={ image } alt="Profile"></img>)
-            : <UserCircleIcon className="h-8 w-8 rounded-full text-gray-400"></UserCircleIcon>
+            : <UserCircleIcon className="h-8 w-8 rounded-full text-neutral-400"></UserCircleIcon>
           }
         </Menu.Button>
       </div>
@@ -36,13 +36,13 @@ export default function ProfileOptions({ profileNavigation }) {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-gray-700 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-neutral-700 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           { profileNavigation.map(({ name, href }) => (
             <Menu.Item key={ name }>
               { ({ active }) => (
                 <a
                   href={ href }
-                  className={ (active ? "bg-gray-600" : '') + " block px-4 py-2 text-sm text-gray-200" }
+                  className={ (active ? "bg-neutral-600" : '') + " block px-4 py-2 text-sm text-neutral-200" }
                 >
                   { name }
                 </a>
@@ -50,7 +50,7 @@ export default function ProfileOptions({ profileNavigation }) {
             </Menu.Item>
           )) }
           <button
-            className={ "w-full text-left block px-4 hover:bg-gray-600 py-2 text-sm text-gray-200" }
+            className={ "w-full text-left block px-4 hover:bg-neutral-600 py-2 text-sm text-neutral-200" }
             onClick={ onLogOutListener }
           >Log out</button>
         </Menu.Items>

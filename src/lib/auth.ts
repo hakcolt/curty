@@ -2,8 +2,7 @@ import { NextPageContext } from "next"
 import { AccessToken } from "../entity/AccessToken"
 import { User } from "../entity/User"
 import { ResultData } from "./types"
-
-const delay = (amount = 750) => new Promise(resolve => setTimeout(resolve, amount))
+import constants from "./types/Contraints"
 
 export interface LoginInput {
   email: string,
@@ -19,7 +18,7 @@ export async function signInRequest(credentials: LoginInput): Promise<LoginApiRe
   const requestHeaders = {
     "Content-Type": "application/json"
   }
-  const res = await fetch("http://localhost:3000/api/v1/users/signin", {
+  const res = await fetch(`${constants.API_URL}/v1/users/signin`, {
     method: "POST",
     mode: "cors",
     headers: requestHeaders,
@@ -43,7 +42,7 @@ export async function refreshTokenRequest(ctx?: NextPageContext) {
   if (req)
     options.headers = { "Cookie": req.headers.cookie! }
 
-  const res = await fetch("http://localhost:3000/api/v1/users/refresh", options)
+  const res = await fetch(`${constants.API_URL}/v1/users/refresh`, options)
 
   const json = await res.json()
   return json

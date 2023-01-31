@@ -1,33 +1,27 @@
-import { destroyCookie, parseCookies, setCookie } from "nookies"
-import { createContext, useContext, useEffect, useState } from "react"
+import { destroyCookie, setCookie } from "nookies"
+import { createContext, useContext } from "react"
 import { LoginInput, signInRequest } from "../../lib/auth"
+import { UserInput } from "../../lib/types"
+import { createUserRequest } from "../../lib/user"
 
 interface AuthContextData {
-  accessToken: string | null
-  isAuthenticated: boolean
+  createUser(data: UserInput): Promise<void>
   logIn(_data: LoginInput): Promise<void>
   logOut(): void
 }
 
 const AuthContext = createContext<AuthContextData>({
-  accessToken: null,
-  isAuthenticated: false,
-  logIn: () => Promise.resolve(),
+  createUser: async () => { },
+  logIn: async () => { },
   logOut: () => { }
 })
 
 export function AuthProvider({ children }) {
-  const [accessToken, setAccessToken] = useState<string | null>(null)
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false)
 
-  useEffect(() => {
-    if (accessToken) return
-      const { "curty.accessToken": cookieAccessToken } = parseCookies()
-      if (cookieAccessToken) {
-        setAccessToken(cookieAccessToken)
-        setIsAuthenticated(true)
-      }
-  }, [accessToken])
+  const registerUser = async (data: UserInput) => {
+    const res = await createUserRequest(data)
+    if (!res._isSuccess) throw new Error(res.error)
+  }
 
   const logIn = async ({ email, password }: LoginInput) => {
     const res = await signInRequest({
@@ -42,24 +36,17 @@ export function AuthProvider({ children }) {
     setCookie(undefined, "curty.accessToken", token, {
       expires: new Date(expiresAt)
     })
-    setAccessToken(token)
-
     setCookie(undefined, "curty.authMode", "keep-logged")
-    setIsAuthenticated(true)
   }
 
   const logOut = () => {
     destroyCookie(undefined, "curty.accessToken")
-    setAccessToken(null)
-
     destroyCookie(undefined, "curty.authMode")
-    setIsAuthenticated(false)
   }
 
   return (
     <AuthContext.Provider value={ {
-      accessToken,
-      isAuthenticated,
+      createUser: registerUser,
       logIn,
       logOut
     } }>

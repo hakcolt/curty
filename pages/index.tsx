@@ -10,6 +10,7 @@ import Background from "../components/Background"
 import BottomModal from "../components/BottomModal"
 import { Link } from "../src/entity/Link"
 import { getURLsRequest } from "../src/lib/link"
+import FormModal from "../components/dialog/Dialog"
 
 
 export async function getServerSideProps(ctx: NextPageContext) {
@@ -17,7 +18,7 @@ export async function getServerSideProps(ctx: NextPageContext) {
 
   if (!accessToken) {
     try {
-      if (authMode != "keep-logged") throw new Error("User is not logged in")
+      if (authMode !== "keep-logged") throw new Error("User is not logged in")
       const res = await refreshTokenRequest(ctx)
       if (!res._isSuccess) throw new Error(res.error)
 
@@ -46,15 +47,11 @@ export async function getServerSideProps(ctx: NextPageContext) {
     if (!linkRes._isSuccess) throw new Error(linkRes.error)
     const links: Link[] = linkRes.data
 
-    const props = { user, links }
+    const props = { user: user, links: links }
     return { props }
   } catch (e: any) {
     if (process.env.NODE_ENV === "development") console.log(e)
-    const redirect = {
-      destination: '/login',
-      permanent: false
-    }
-    return { redirect }
+    return { props: null }
   }
 }
 
@@ -64,16 +61,17 @@ export default function Home({ user, links }) {
     <>
       <Head>
         <title>Home</title>
-        <link rel="shortcut icon" href="/images/logo_simple_white.svg" type="image/x-icon" />
+        <link rel="shortcut icon" href="/images/logo-simple.svg" type="image/x-icon" />
       </Head>
 
       <HomeProvider data={ { user, links } }>
-        <div className="overflow-x-hidden relative bg-gray-900">
+        <FormModal />
+        <div className="overflow-x-hidden relative">
           <Toolbar></Toolbar>
           <Background></Background>
           <main className="relative max-w-3xl m-auto">
             <Hero></Hero>
-            <div className="px-1 -mt-14">
+            <div className="px-2 md:mt-32 mt-24">
               <BottomModal></BottomModal>
             </div>
           </main>

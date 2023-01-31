@@ -1,3 +1,6 @@
+import constants from "./Contraints"
+import { UserInput } from "./User"
+
 interface ResultData<T> {
   message: string | undefined
   error: string | undefined
@@ -15,4 +18,5 @@ interface Result {
   next: string | undefined
 }
 
-export type { Result, ResultData }
+export { constants }
+export type { Result, ResultData, UserInput }
