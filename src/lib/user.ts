@@ -1,5 +1,5 @@
 import { ResultData } from "./types"
-import constants from "./types/Contraints"
+import constants from "./types/constants"
 import { UserInput } from "./types"
 import { User } from "../entity/User"
 

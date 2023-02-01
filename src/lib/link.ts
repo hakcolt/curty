@@ -1,12 +1,6 @@
 import { Link } from "../entity/Link"
-import { ResultData } from "./types"
-import constants from "./types/Contraints"
-
-export type PushRequestInput = {
-  name: string
-  path: string
-  url: string
-}
+import { LinkInput, ResultData } from "./types"
+import constants from "./types/constants"
 
 export async function getURLsRequest(accessToken: string): Promise<ResultData<Link[]>> {
   const options: any = {
@@ -22,7 +16,7 @@ export async function getURLsRequest(accessToken: string): Promise<ResultData<Li
   return json
 }
 
-export async function pushLinkRequest(accessToken: string, input: PushRequestInput): Promise<ResultData<Link[]>> {
+export async function pushLinkRequest(accessToken: string, input: LinkInput): Promise<ResultData<Link[]>> {
   const requestHeaders = {
     "Content-Type": "application/json",
     "Authorization": `Bearer ${accessToken}`

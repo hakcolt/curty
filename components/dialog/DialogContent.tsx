@@ -68,14 +68,14 @@ export default function DialogContent() {
             </div>
           </div>
 
-          <div className="bg-neutral-700 gap-2 px-4 py-3 flex flex-col sm:flex-row-reverse sm:px-6">
+          <div className="bg-neutral-800 gap-2 px-4 py-3 flex flex-col sm:flex-row-reverse sm:px-6">
             <FormButton
               className="w-full sm:w-auto sm:shrink-0"
               isLoading={ isSubmitting }
             >Save</FormButton>
             <button
               type="button"
-              className="w-full sm:w-auto sm:shrink-0 py-2 px-4 border border-transparent text-sm font-medium rounded-md text-neutral-200 bg-neutral-600 hover:bg-neutral-500 focus:ring-2 focus:ring-red-600"
+              className="w-full sm:w-auto sm:shrink-0 py-2 px-4 border border-transparent text-sm font-medium rounded-md text-neutral-200 bg-neutral-700 hover:bg-neutral-600 focus:ring-2 focus:ring-red-600"
               onClick={ () => dialog.setShow(false) }
             >Cancel</button>
           </div>
