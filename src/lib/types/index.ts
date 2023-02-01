@@ -1,7 +1,7 @@
 import constants from "./constants"
-import { LinkInput } from "./link"
-import { Result, ResultData } from "./response"
-import { UserInput } from "./user"
+import { LinkInput } from "./linkType"
+import { Result, ResultData } from "./responseType"
+import { UserInput } from "./userType"
 
 export { constants }
 export type { Result, ResultData, UserInput, LinkInput }
