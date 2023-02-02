@@ -2,7 +2,7 @@ import { NextPageContext } from "next"
 import { AccessToken } from "../entity/AccessToken"
 import { User } from "../entity/User"
 import { ResultData } from "./types"
-import constants from "./types/Contraints"
+import constants from "./types/constants"
 
 export interface LoginInput {
   email: string,
