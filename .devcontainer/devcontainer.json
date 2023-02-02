@@ -1,0 +1,14 @@
+{
+  "image": "mcr.microsoft.com/devcontainers/base:debian",
+  "postCreateCommand": "npm install",
+  "forwardPorts": [3200],
+  "customizations": {
+    "vscode": { 
+      "settings": {
+        "files.autoSave": "off"
+      },
+      "extensions": ["bradlc.vscode-tailwindcss"]
+     }
+  },
+  "features": { "ghcr.io/devcontainers/features/git:1": {} }
+}
