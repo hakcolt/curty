@@ -80,7 +80,6 @@ This project is on the MIT license. See the file [LICENSE.md](https://github.com
 
 > If you liked this project, consider giving it a star. It won't cost you anything and that way you help me a lot.
 
-<br>
 <hr>
 <p style="text-align: right">
 Made with ❤️ in Brazil
