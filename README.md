@@ -1,3 +1,7 @@
+<div style="text-align: center; padding: 40px 0px 60px 0px">
+  <img src="https://raw.githubusercontent.com/hakcolt/curty/master/public/images/logo-plus.svg"></img>
+</div>
+
 # Curty - URL Shortner
 
 Curty is a modern **open source URL shortner** made with NextJS and that use the [Curty Backend API](https://github.com/hakcolt/curty-backend) to make custom short links.
@@ -10,6 +14,7 @@ This NextJS 13 application comes with a fully functional authentication system b
 
 * Fully typed with typescript
 * Login and register use cases
+* Free and open source
 * Design with elegant color palette and modals
 * Automatic JWT Token refresh
 * useAuth() hook to easily manage the user section
@@ -33,8 +38,14 @@ These instructions enable you to obtain a copy of this project in your local mac
 
 ### Prerequisites
 
-* NodeJS v18 or higher
+* Node.js v18 or higher
 * npm v8 or higher
+
+**Clone this repo**
+
+```shell
+git clone https://github.com/hakcolt/curty.git
+```
 
 **Install the necessaries packages:**
 
@@ -74,13 +85,11 @@ The user sends a *POST* request to `https://s.hakcolt.com/api/links` passing the
 
 This project is on the MIT license. See the file [LICENSE.md](https://github.com/hakcolt/curty/LICENSE.md) for more details.
 
-## ✒️ Autors
+## ✒️ Authors
 
 * **Igor Hakcolt** - Owner - [@hakcolt](https://github.com/hakcolt)
 
-> If you liked this project, consider giving it a star. It won't cost you anything and that way you help me a lot.
+> **Note**: If you liked this project, consider giving it a star. It won't cost you anything and that way you help me a lot.
 
-<hr>
-<p style="text-align: right">
-Made with ❤️ in Brazil
-<p>
+---
+<p style="text-align: right">Made with ❤️ in Brazil.</p>

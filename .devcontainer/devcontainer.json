@@ -2,6 +2,13 @@
   "image": "mcr.microsoft.com/devcontainers/base:debian",
   "postCreateCommand": "npm install",
   "forwardPorts": [3200],
+  "portsAttributes": {
+    "3000": {
+      "label": "Application",
+      "onAutoForward": "notify",
+      "protocol": "https"
+    }
+  },
   "customizations": {
     "vscode": { 
       "settings": {
@@ -10,5 +17,10 @@
       "extensions": ["bradlc.vscode-tailwindcss"]
      }
   },
-  "features": { "ghcr.io/devcontainers/features/git:1": {} }
+  "features": { 
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "18"
+    }
+   }
 }

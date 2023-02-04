@@ -1,19 +1,11 @@
 import Head from 'next/head'
-import { useForm } from 'react-hook-form'
 import Image from "next/image"
 import logoPlusImage from "../../public/images/logo-plus.svg"
-import FormButton from "../../components/form/Button"
-import CheckBox from "../../components/form/CheckBox"
-import { useAuth } from "../../src/providers/auth"
 import Router from "next/router"
-import { useEffect, useState } from "react"
-import { ExclamationTriangleIcon } from "@heroicons/react/24/outline"
-import { LoginInput, refreshTokenRequest } from "../../src/lib/auth"
 import { NextPageContext } from "next"
 import nookies from "nookies"
-import InputForm from "../../components/form/InputForm"
-import { Validation } from "@hakcolt/validator"
 import LoginForm from "./LoginForm"
+import { refreshTokenRequest } from "../../src/lib/auth"
 
 export async function getServerSideProps(ctx: NextPageContext) {
   let { "curty.authMode": authMode } = nookies.get(ctx)
@@ -61,7 +53,7 @@ export default function Login({ serverError }) {
             className="mx-auto mt-6"
             src={ logoPlusImage }
             width={ 500 }
-            height={ 150 }
+            height={ 200 }
             alt="Logo" />
 
           <h2 className="mt-16 text-center text-3xl font-extrabold text-neutral-100">Sign in to your account</h2>
