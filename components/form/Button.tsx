@@ -35,7 +35,7 @@ export default function FormButton({
       }
       <p className={
         formatClassName("text-center w-full", icon ? "ml-2" : "")
-        }> { isLoading ? "Loading" : children }</p>
+      }> { isLoading ? "Loading" : children }</p>
     </button>
   )
 }

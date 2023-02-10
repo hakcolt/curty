@@ -1,6 +1,6 @@
 import Head from "next/head"
-import nookies from 'nookies'
-import { NextPageContext } from 'next'
+import nookies from "nookies"
+import { NextPageContext } from "next"
 import Toolbar from "../components/toolbar"
 import Hero from "../components/Hero"
 import { refreshTokenRequest } from "../src/lib/auth"
@@ -14,7 +14,9 @@ import FormModal from "../components/dialog/Dialog"
 
 
 export async function getServerSideProps(ctx: NextPageContext) {
-  let { "curty.accessToken": accessToken, "curty.authMode": authMode } = nookies.get(ctx)
+  const cookies = nookies.get(ctx)
+  let { "curty.accessToken": accessToken } = cookies
+  const {"curty.authMode": authMode} = cookies
 
   if (!accessToken) {
     try {
@@ -28,10 +30,10 @@ export async function getServerSideProps(ctx: NextPageContext) {
       })
       accessToken = serverAccessToken.token
       // TODO: axios
-    } catch (e: any) {
+    } catch (e: unknown) {
       if (process.env.NODE_ENV === "development") console.log(e)
       const redirect = {
-        destination: '/login',
+        destination: "/login",
         permanent: false
       }
       return { redirect }
@@ -49,7 +51,7 @@ export async function getServerSideProps(ctx: NextPageContext) {
 
     const props = { user: user, links: links }
     return { props }
-  } catch (e: any) {
+  } catch (e: unknown) {
     if (process.env.NODE_ENV === "development") console.log(e)
     return { props: null }
   }

@@ -29,6 +29,7 @@ export default function Hero() {
         type="url"
         label="Insert your link here"
         register={ register("url", { required: true }) }
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         submit={ handleSubmit(openForm as any) }
         className="sm:mt-20 mt-10" />
       { error && <p className="text-white inline-block bg-red-500 p-2 px-4 text-sm mt-4 rounded-md">Invalid URL</p> }

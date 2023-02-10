@@ -14,7 +14,10 @@
       "settings": {
         "files.autoSave": "off"
       },
-      "extensions": ["bradlc.vscode-tailwindcss"]
+      "extensions": [
+        "bradlc.vscode-tailwindcss",
+        "dbaeumer.vscode-eslint"
+      ]
      }
   },
   "features": { 

@@ -8,10 +8,6 @@ import InputForm from "../../components/form/InputForm"
 import SelectForm from "../../components/form/SelectForm"
 import { useAuth } from "../../src/providers/auth"
 
-function delay() {
-  return new Promise<void>((resolve) => setTimeout(() => resolve(), 2000))
-}
-
 export default function UserForm() {
   const [responseError, setResponseError] = useState("")
   const { createUser } = useAuth()
@@ -31,7 +27,7 @@ export default function UserForm() {
   }
 
   async function regiserUser(data) {
-    data.gender = (data.gender as string).toLowerCase().replace(' ', '')
+    data.gender = (data.gender as string).toLowerCase().replace(" ", "")
     setResponseError("")
 
     try {
@@ -44,13 +40,14 @@ export default function UserForm() {
       })
 
       Router.push("/login")
-    } catch (e: any) {
-      setResponseError(e.message)
+    } catch (e: unknown) {
+      setResponseError((e as Error).message)
     }
   }
 
   return (
-    <form onSubmit={ handleSubmit(validateData as any) }>
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    <form data-testid="form-register" onSubmit={ handleSubmit(validateData as any) }>
       <div className="overflow-hidden shadow rounded-md">
         <div className="bg-neutral-800 px-6 py-7 sm:p-6">
           <div className="grid grid-cols-6 gap-6">

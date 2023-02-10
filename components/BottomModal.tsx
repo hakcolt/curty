@@ -11,7 +11,7 @@ export default function BottomModal() {
     try {
       await deleteLink(link)
       setUpdateLayout(!updateLayout)
-    } catch (e: any) {
+    } catch (e: unknown) {
       if (process.env.NODE_ENV === "development") console.log(e)
     }
   }

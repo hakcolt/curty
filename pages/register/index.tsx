@@ -6,10 +6,10 @@ import UFormHeader from "./UFormHeader"
 import UserForm from "./UserForm"
 
 export async function getServerSideProps(ctx: NextPageContext) {
-  let { "curty.authMode": authMode } = nookies.get(ctx)
+  const { "curty.authMode": authMode } = nookies.get(ctx)
 
   const redirect = {
-    destination: '/',
+    destination: "/",
     permanent: false
   }
 
@@ -26,7 +26,7 @@ export async function getServerSideProps(ctx: NextPageContext) {
     return { redirect }
 
     // TODO: axios
-  } catch (e: any) {
+  } catch (e: unknown) {
     if (process.env.NODE_ENV === "development") console.log(e)
     return { props: { serverError: "Serve unavailable" } }
   }
@@ -45,6 +45,7 @@ export default function Register() {
           <div className="md:col-span-1 md:flex md:text-center md:items-center">
             <UFormHeader />
           </div>
+          
           <div className="mt-5 md:col-span-2 md:mt-0 md:px-5">
             <UserForm />
           </div>
